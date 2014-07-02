@@ -22,11 +22,9 @@ $sScheme = isset($_GET['scheme'])?$_GET['scheme']:null;
 $sCache = realpath(CACHE_FOLDER).(isset($sScheme)?'/'.$sScheme:"");
 
 //Define folder structure original contains base files and format folder are in the cache
-$sOriginalFile = $sCache.'/original/'.$sPath;
+$sPath = trim($sPath, '/');
+$sOriginalFile = $_SERVER['DOCUMENT_ROOT']."/$sPath";
 $sOriginalDir = dirname($sOriginalFile);
-
-$sResizedFile = $sCache.'/'.$_GET['format'].'/'.$sPath;
-$sResizedDir = dirname($sResizedFile);
 
 //If the original file does not exists
 if( !is_file($sOriginalFile) ) {
@@ -60,6 +58,9 @@ if( !is_file($sOriginalFile) ) {
 	}
 }
 
+$sResizedFile = $sCache.'/'.$_GET['format'].'/'.md5_file($sOriginalFile);
+$sResizedDir = dirname($sResizedFile);
+
 //If resized folder does not exists we add it
 if( !is_dir($sResizedDir) ) {
 	$umask = umask(0);
@@ -78,9 +79,12 @@ try
 		require_once dirname(__FILE__).'/src/Image/GDImage.php';
 		$oResized = new GDImage($sOriginalFile);
 	}
-	//Use built Image manipulator to resize and save the new file
-	$oResized->resizeAndCrop($aFormat[0], $aFormat[1]);
-	$oResized->save($sResizedFile);
+	if(!file_exists($sResizedFile))
+	{
+  	//Use built Image manipulator to resize and save the new file
+  	$oResized->resizeAndCrop($aFormat[0], $aFormat[1]);
+  	$oResized->save($sResizedFile);
+	}
 
 	//Build valid HTTP Headers for cache and content type/length for a correct navigator management
 	$expires = 60*60*24*14;

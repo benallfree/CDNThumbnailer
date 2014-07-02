@@ -1,13 +1,19 @@
 {
-    "name": "shulard/cdn-thumbnailer",
-    "description": "A php library which resize images dynamically. A proxy allow to use it with a cache for an image CDN.",
-    "keywords": ["php","thumbnail","cdn","generator"],
+    "name": "benallfree/cdn-thumbnailer",
+    "description": "A PHP image proxy for dynamic image resizing.",
+    "keywords": ["php","thumbnail","cdn","generator","proxy","resize", "image"],
     "license": "MIT",
     "authors": [
         {
             "name": "Stephane HULARD",
             "email": "s.hulard@chstudio.fr"
+        },
+        {
+            "name": "Ben Allfree",
+            "email": "ben@benallfree.com"
         }
     ],
-    "require": {}
+    "require": {
+      "benallfree/makenv": "1.0.*@dev"
+    }
 }
