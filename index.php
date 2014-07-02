@@ -9,8 +9,7 @@
  * @package Default
  */
 
-//Require configuration
-require_once dirname(__FILE__).'/config/config.inc.php';
+require(__DIR__."/../../autoload.php");
 
 //File path to be resized
 $sPath = $_GET['path'];
@@ -19,7 +18,7 @@ $aFormat = explode('x', $_GET['format']);
 //Image url scheme if image is an external one
 $sScheme = isset($_GET['scheme'])?$_GET['scheme']:null;
 
-$sCache = realpath(CACHE_FOLDER).(isset($sScheme)?'/'.$sScheme:"");
+$sCache = realpath(CDNTHUMBNAILER_CACHE_PATH).(isset($sScheme)?'/'.$sScheme:"");
 
 //Define folder structure original contains base files and format folder are in the cache
 $sPath = trim($sPath, '/');
