@@ -13,6 +13,11 @@
             "email": "ben@benallfree.com"
         }
     ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    },
     "require": {
       "benallfree/makenv": "1.0.*@dev"
     }
