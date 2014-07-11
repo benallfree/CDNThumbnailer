@@ -44,15 +44,7 @@ RewriteRule . /index.php
 
 CDNThumbnailer needs to know the absolute path to the cach folder it will be using.
 
-In `makenv`, add a `CDNThumbnailer'. If your folder is named `cache` in the web root, then your `makenv` section would look like this:
-
-```
-$config = array(
-  'CDNThumbnailer'=>array(
-    'cache_path'=>__DIR__.'/cache'
-  ),
-);
-```
+We suggest [phpdotenv](https://packagist.org/packages/vlucas/phpdotenv) for environment configuration. However you accomplish it, CDNThumbnailer wants `$_ENV['CDN_THUMBNAILER_CACHE_PATH]` to be defined.
 
 Make sure the folder as write permissions.
 

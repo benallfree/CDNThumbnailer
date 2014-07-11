@@ -13,7 +13,7 @@
             "email": "ben@benallfree.com"
         }
     ],
-    "require": {
-      "benallfree/makenv": "*"
+    "suggest": {
+      "vlucas/phpdotenv": "Manage environment configuration"
     }
 }

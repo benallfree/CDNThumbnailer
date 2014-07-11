@@ -18,7 +18,7 @@ $aFormat = explode('x', $_GET['format']);
 //Image url scheme if image is an external one
 $sScheme = isset($_GET['scheme'])?$_GET['scheme']:null;
 
-$sCache = realpath(CDNTHUMBNAILER_CACHE_PATH).(isset($sScheme)?'/'.$sScheme:"");
+$sCache = realpath($_ENV['CDN_THUMBNAILER_CACHE_PATH']).(isset($sScheme)?'/'.$sScheme:"");
 
 //Define folder structure original contains base files and format folder are in the cache
 $sPath = trim($sPath, '/');
