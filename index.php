@@ -11,6 +11,9 @@
 
 require(__DIR__."/../../autoload.php");
 
+Dotenv::load(__DIR__."/../../..");
+Dotenv::required(['CDN_THUMBNAILER_CACHE_PATH']);
+
 //File path to be resized
 $sPath = $_GET['path'];
 //Requested format (11x11)
